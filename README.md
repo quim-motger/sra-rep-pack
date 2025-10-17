@@ -1,8 +1,8 @@
 # Designing a Software Reference Architecture for NLP4RE Tools
 
 [![GitHub](https://img.shields.io/github/license/airera/study-sra)](./LICENSE)
-<!-- [![DOI](https://zenodo.org/badge/702902445.svg)](https://zenodo.org/doi/10.5281/zenodo.10423665)
-[![arXiv](https://img.shields.io/badge/arXiv-2401.01154-b31b1b.svg)](https://arxiv.org/abs/2401.01154) -->
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17375189.svg)](https://doi.org/10.5281/zenodo.17375189)
+<!--[![arXiv](https://img.shields.io/badge/arXiv-2401.01154-b31b1b.svg)](https://arxiv.org/abs/2401.01154) -->
 
 This repository contains the replication package for the study designing a software reference architecture (SRA) for natural-language processing (NLP) based requirements engineering (RE) tools (NLP4RE).
 The design follows the ProSA-RA process by Nakagawa et al.[^1].
