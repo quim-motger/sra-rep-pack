@@ -8,10 +8,11 @@ This repository contains the replication package for the study designing a softw
 The design follows the ProSA-RA process by Nakagawa et al.[^1].
 
 > [!important]
-> This repository currently contains only 2 out of the 4 steps from the SRA creation framework.
-> The remaining 2 steps are future work of the current research preview.
+> This repository currently contains only early results of the SRA creation framework. 
+> Early results include the elicitation of requirements from NLP4RE stakeholders involved in a focus group activity.
+> The remaining steps are future work of the current research preview.
 
-![Overview of the implemented 2 steps](figures/Research%20Preview%20Method%20Overview.png)
+![Overview of the SRA creation framework](figures/airera-roadmap.png)
 
 ## Author and Article Details
 
@@ -32,8 +33,8 @@ This repository contains the following files:
 
 ```
 ├── figures: all data used in this study
-│   ├── Reference Model Draft.pdf : initial draft of an abstract reference model of NLP4RE tools
-│   └── Research Preview Method Overview.pdf : illustration of the applied research method
+│   ├── airera-roadmap.pdf : illustration of the applied research method (pdf)
+│   └── airera-roadmap.png : illustration of the applied research method (png)
 ├── process : material for the SRA creation process following Nakagawa et al.
 │   ├── 1 - information source identification : elicitation of potential sources of requirements
 │   │   ├── stakeholders : elicitation of requirements from NLP4RE tool users and developers
@@ -46,8 +47,7 @@ This repository contains the following files:
 │   │   └── Related Work.xlsx : tabular overview of related scientific manuscripts
 │   └── 2 - architectural analysis : extraction of requirements from the identified sources
 │       ├── analysis-process.md : process description of the architectural analysis
-│       ├── Domain Concepts.pdf : ontology of domain concepts
-│       └── Requirements.xlsx : system and reference architecture requirements extracted from all sources
+│       └── Requirements.xlsx : system requireents elicited from the focus group activity
 └── LICENSE.md : license file clarifying reuse of this material
 ```
 
@@ -57,7 +57,7 @@ Depending on your use case, consult the following files:
 
 - **Replicating the focus group activity**: If you want to replicate the elicitation of requirements from NLP4RE stakeholders, access the *AIRE'25 Interactive Session Instructions.pptx* file that explains the method. For our implementation at AIRE'25, we invited participants to place post-it notes on white boards.
 - **Reviewing the architectural analysis**: If you want to review the extraction of requirements from the information sources, access the *Requirements.xlsx* file. In the "System"-tab, you find the requirements in and rationale for them in respective columns. The "Source" and "Locator" columns specify, where this requirement was extracted from. In the *analysis-process.md* file you find a description of the applied extraction and synthesis process.
-- **Accessing the requirements**: If you want to check the requirements that we arrived at, review the *Requirements.xlsx* file. Note the "System" and "Architecture" tabs which contain requirements for NLP4RE systems and for a reference architecture respectively.
+- **Accessing the requirements**: If you want to check the requirements that we arrived at, review the *Requirements.xlsx* file. 
 
 ## License
 
