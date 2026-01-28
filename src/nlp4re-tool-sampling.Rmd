@@ -1,0 +1,113 @@
+---
+title: "NLP4RE Tools Sampling"
+author: "Julian Frattini"
+date: "2026-01-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(patchwork)
+```
+
+This notebook draws a random sample from the list of NLP4RE tools.
+
+## Data Preparation
+
+First, we load the data produced by Frattini et al.[^1]
+
+```{r load-data}
+d <- read_tsv("data/nlp4re-tools.tsv", skip = 2)
+```
+
+Next, we parse the data and cast all relevant variables to their respective form.
+
+```{r parse-data}
+# specification of all categories
+#c.license <- c("MIT", "CC2.0", "None", "Apache 2.0", "Unknown", "CC4.0", "GPL3.0",
+#               "EPL", "MS-RSL", "MPL-2.0", "CC0", "BSD-2-Clause")
+c.availability <- c("Proprietary", "Private", "Unavailable", "Broken", 
+                    "Upon Request", "Reachable", "Open Source", "Archived")
+c.activity <- c("Elicitation", "Analysis", "Modeling", "Validation & Verification",
+                  "Management", "Other", "Multiple")
+c.task <- c("Detection", "Extraction", "Classification", "Transformation", 
+            "Tracing & Relating", "Search & Retrieval", "Generation")
+
+d <- d %>% 
+  mutate(
+    Verdict = factor(Verdict, levels = c("included", "excluded"), ordered = FALSE),
+    #License = factor(License, levels = c.license, ordered = FALSE),
+    Availability = factor(Availability, levels = c.availability, ordered = TRUE),
+    Activity = factor (`RE Activity`, levels = c.activity, ordered = FALSE),
+    Task = factor(`Tool Task`, levels = c.task, ordered = FALSE)
+  ) %>% 
+  select(ID, Verdict, Name, `Source Code`, Availability, Activity, Task)
+
+str(d)
+```
+
+We need to apply some inclusion criteria, namely:
+
+1. Only consider articles that presented an NLP4RE tool.
+2. Only consider tools where the source code is available.
+3. Only consider tools that are available (i.e., their `Availability` is `Reachable`, `Open Source`, or `Archived`).
+
+```{r filter-data}
+df <- d %>% 
+  filter(
+    Verdict == "included",
+    `Source Code` == TRUE,
+    Availability %in% c("Reachable", "Open Source", "Archived")
+  )
+```
+
+For later comparison, we visualize the distribution of the three determining variables *Availability*, *Activity*, and *Task* in the population.
+
+```{r visualize-distribution}
+visualize_distribution <- function(data, attribute) {
+  plt.availability <- ggplot(data, aes(y = .data[[attribute]], fill = .data[[attribute]])) +
+    geom_bar() +
+    theme_bw() +
+    theme(axis.title.x = element_blank()) +
+    guides(fill = "none") +
+    scale_x_continuous(labels = scales::number)
+  
+  return(plt.availability)
+}
+
+visualize_distributions <- function(data) {
+  plt.availability <- visualize_distribution(data, "Availability")
+  plt.activity <- visualize_distribution(data, "Activity")
+  plt.task <- visualize_distribution(data, "Task")
+  
+  plt.availability / plt.activity / plt.task
+}
+
+visualize_distributions(df)
+```
+
+## Sampling
+
+With the data prepared, we draw a random sample of size `sample.size` from the eligible NLP4RE tools.
+We visually assess whether the distribution of the three relevant factors *Availability*, *Activity*, and *Task* in the subset is equal to the distribution to the overall population.
+
+```{r sample}
+set.seed(8) # other eligible candidates: 4
+sample.size = 25
+
+sampled.id <- sample(df$ID, size = sample.size, replace = FALSE)
+dfs <- df %>% filter(ID %in% sampled.id)
+
+visualize_distributions(dfs)
+```
+
+Visually, these distributions are fairly equal, meaning that the subset preserves the distribution of the population.
+Hence, the following selection of tools can be used for the traceability mapping method.
+
+```{r print-selection}
+print(dfs %>% select(ID, Name, Availability, Activity, Task), n = sample.size)
+```
+
+[^1]: Frattini, J., Unterkalmsteiner, M., Fucci, D., & Mendez, D. (2025). NLP4RE Tools: Classification, Overview and Management. In Handbook on Natural Language Processing for Requirements Engineering (pp. 357-380). Cham: Springer Nature Switzerland.
