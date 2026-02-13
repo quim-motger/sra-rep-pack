@@ -107,7 +107,41 @@ Visually, these distributions are fairly equal, meaning that the subset preserve
 Hence, the following selection of tools can be used for the traceability mapping method.
 
 ```{r print-selection}
-print(dfs %>% select(ID, Name, Availability, Activity, Task), n = sample.size)
+#print(dfs %>% select(ID, Name, Availability, Activity, Task), n = sample.size)
+print(dfs %>% select(ID, Availability, Activity, Task), n = sample.size)
 ```
 
+## Re-Sampling
+
+Two of the selected tools are no longer available:
+
+1. The anaphoric ambiguity detector by Ezzini et al.[^2] was originally available at https://gitlab.uni.lu/sabualhaija/anaphoric-ambiguity but the URL no longer resolves.
+2. ScenarioAmigo by Ko et al.[^3] was originally available at https://github.com/maniara/ScenarioAmigo but the repository is no longer available on GitHub.
+
+We re-sample from the remaining data but try to preserve the distribution of the sample.
+The anaphoric ambiguity detector was classified as supporting the *analysis* activity with a *detection* task.
+The C&L tool mirrors these properties, and therefore, is an adequate replacement.
+
+```{r replace-r124}
+df %>% 
+  filter(!(ID %in% dfs$ID) & (Activity == "Analysis") & (Task == "Detection")) %>% 
+  select(ID, Name, Availability, Activity, Task)
+```
+
+ScenarioAmigo was classified as supporting the *analysis* activity with a *generation* task. 
+Sadly, no other tool matches this configuration.
+Since *generation*-task tools are rare, we prioritize this property.
+Additionally, ScenarioAmigo was *reachable*, which we can also preserve.
+
+```{r replace-R176}
+df %>% 
+  filter(!(ID %in% dfs$ID) & (Availability == "Reachable") & (Task == "Generation")) %>% 
+  select(ID, Name, Availability, Activity, Task)
+```
+
+Among the two possible choices, we select DBRG since it it implemented in Java, which is under-represented in our sample.
+
 [^1]: Frattini, J., Unterkalmsteiner, M., Fucci, D., & Mendez, D. (2025). NLP4RE Tools: Classification, Overview and Management. In Handbook on Natural Language Processing for Requirements Engineering (pp. 357-380). Cham: Springer Nature Switzerland.
+[^2]: Ezzini, S., Abualhaija, S., Arora, C., & Sabetzadeh, M. (2022, May). Automated handling of anaphoric ambiguity in requirements: a multi-solution study. In Proceedings of the 44th International Conference on Software Engineering (pp. 187-199).
+[^3]: Ko, D., Kim, S., & Park, S. (2019). Automatic recommendation to omitted steps in use case specification. Requirements Engineering, 24, 431-458.
+

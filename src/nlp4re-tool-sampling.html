@@ -461,35 +461,74 @@ visualize_distributions(dfs)</code></pre>
 subset preserves the distribution of the population. Hence, the
 following selection of tools can be used for the traceability mapping
 method.</p>
-<pre class="r"><code>print(dfs %&gt;% select(ID, Name, Availability, Activity, Task), n = sample.size)</code></pre>
-<pre><code>## # A tibble: 25 × 5
-##    ID    Name                                        Availability Activity Task 
-##    &lt;chr&gt; &lt;chr&gt;                                       &lt;ord&gt;        &lt;fct&gt;    &lt;fct&gt;
-##  1 R002  OpenReq-DD (dependency detection)           Open Source  Managem… Trac…
-##  2 R012  Key Concepts Extraction Tool                Reachable    Analysis Extr…
-##  3 R014  Non-functional Requirements Classifier      Reachable    Managem… Clas…
-##  4 R017  Requirements Formalizer                     Reachable    Validat… Extr…
-##  5 R018  Relationship Recommender                    Archived     Modeling Trac…
-##  6 R024  TT-RecS                                     Archived     Managem… Trac…
-##  7 R028  Cause-effect recognition (CEREC)            Archived     Validat… Clas…
-##  8 R032  User Comment Classifier                     Open Source  Elicita… Clas…
-##  9 R039  OS Issue Discussion classifier              Reachable    Elicita… Clas…
-## 10 R046  LadderBot                                   Archived     Elicita… Sear…
-## 11 R066  DeepCoref                                   Reachable    Analysis Clas…
-## 12 R094  TypedLinkDetection                          Open Source  Managem… Trac…
-## 13 R103  Template Converter                          Reachable    Elicita… Extr…
-## 14 R108  ForumLinker                                 Archived     Managem… Trac…
-## 15 R113  ZSL Classifier                              Open Source  Multiple Clas…
-## 16 R124  Anaphoric Ambiguity Detector                Open Source  Analysis Dete…
-## 17 R125  DeepSTL                                     Archived     Validat… Tran…
-## 18 R129  MAANA                                       Open Source  Analysis Dete…
-## 19 R137  TAROT                                       Reachable    Managem… Trac…
-## 20 R149  CiRA Classifier                             Archived     Validat… Clas…
-## 21 R155  RECONSUM                                    Open Source  Elicita… Extr…
-## 22 R161  MaRK-II (Mine Requirements Knowledge)       Open Source  Elicita… Extr…
-## 23 R166  RE-BERT (Requirements Engineering using Bi… Open Source  Elicita… Extr…
-## 24 R176  ScenarioAmigo                               Reachable    Analysis Gene…
-## 25 R186  User Story Instability Predictor            Archived     Analysis Extr…</code></pre>
+<pre class="r"><code>#print(dfs %&gt;% select(ID, Name, Availability, Activity, Task), n = sample.size)
+print(dfs %&gt;% select(ID, Availability, Activity, Task), n = sample.size)</code></pre>
+<pre><code>## # A tibble: 25 × 4
+##    ID    Availability Activity                  Task              
+##    &lt;chr&gt; &lt;ord&gt;        &lt;fct&gt;                     &lt;fct&gt;             
+##  1 R002  Open Source  Management                Tracing &amp; Relating
+##  2 R012  Reachable    Analysis                  Extraction        
+##  3 R014  Reachable    Management                Classification    
+##  4 R017  Reachable    Validation &amp; Verification Extraction        
+##  5 R018  Archived     Modeling                  Tracing &amp; Relating
+##  6 R024  Archived     Management                Tracing &amp; Relating
+##  7 R028  Archived     Validation &amp; Verification Classification    
+##  8 R032  Open Source  Elicitation               Classification    
+##  9 R039  Reachable    Elicitation               Classification    
+## 10 R046  Archived     Elicitation               Search &amp; Retrieval
+## 11 R066  Reachable    Analysis                  Classification    
+## 12 R094  Open Source  Management                Tracing &amp; Relating
+## 13 R103  Reachable    Elicitation               Extraction        
+## 14 R108  Archived     Management                Tracing &amp; Relating
+## 15 R113  Open Source  Multiple                  Classification    
+## 16 R124  Open Source  Analysis                  Detection         
+## 17 R125  Archived     Validation &amp; Verification Transformation    
+## 18 R129  Open Source  Analysis                  Detection         
+## 19 R137  Reachable    Management                Tracing &amp; Relating
+## 20 R149  Archived     Validation &amp; Verification Classification    
+## 21 R155  Open Source  Elicitation               Extraction        
+## 22 R161  Open Source  Elicitation               Extraction        
+## 23 R166  Open Source  Elicitation               Extraction        
+## 24 R176  Reachable    Analysis                  Generation        
+## 25 R186  Archived     Analysis                  Extraction</code></pre>
+</div>
+<div id="re-sampling" class="section level2">
+<h2>Re-Sampling</h2>
+<p>Two of the selected tools are no longer available:</p>
+<ol style="list-style-type: decimal">
+<li>The anaphoric ambiguity detector by Ezzini et al.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> was originally
+available at <a href="https://gitlab.uni.lu/sabualhaija/anaphoric-ambiguity" class="uri">https://gitlab.uni.lu/sabualhaija/anaphoric-ambiguity</a>
+but the URL no longer resolves.</li>
+<li>ScenarioAmigo by Ko et al.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> was originally available at <a href="https://github.com/maniara/ScenarioAmigo" class="uri">https://github.com/maniara/ScenarioAmigo</a> but the
+repository is no longer available on GitHub.</li>
+</ol>
+<p>We re-sample from the remaining data but try to preserve the
+distribution of the sample. The anaphoric ambiguity detector was
+classified as supporting the <em>analysis</em> activity with a
+<em>detection</em> task. The C&amp;L tool mirrors these properties, and
+therefore, is an adequate replacement.</p>
+<pre class="r"><code>df %&gt;% 
+  filter(!(ID %in% dfs$ID) &amp; (Activity == &quot;Analysis&quot;) &amp; (Task == &quot;Detection&quot;)) %&gt;% 
+  select(ID, Name, Availability, Activity, Task)</code></pre>
+<pre><code>## # A tibble: 1 × 5
+##   ID    Name  Availability Activity Task     
+##   &lt;chr&gt; &lt;chr&gt; &lt;ord&gt;        &lt;fct&gt;    &lt;fct&gt;    
+## 1 R170  C&amp;L   Reachable    Analysis Detection</code></pre>
+<p>ScenarioAmigo was classified as supporting the <em>analysis</em>
+activity with a <em>generation</em> task. Sadly, no other tool matches
+this configuration. Since <em>generation</em>-task tools are rare, we
+prioritize this property. Additionally, ScenarioAmigo was
+<em>reachable</em>, which we can also preserve.</p>
+<pre class="r"><code>df %&gt;% 
+  filter(!(ID %in% dfs$ID) &amp; (Availability == &quot;Reachable&quot;) &amp; (Task == &quot;Generation&quot;)) %&gt;% 
+  select(ID, Name, Availability, Activity, Task)</code></pre>
+<pre><code>## # A tibble: 2 × 5
+##   ID    Name                   Availability Activity    Task      
+##   &lt;chr&gt; &lt;chr&gt;                  &lt;ord&gt;        &lt;fct&gt;       &lt;fct&gt;     
+## 1 R038  Domain model extractor Reachable    Elicitation Generation
+## 2 R086  DBRG                   Reachable    Elicitation Generation</code></pre>
+<p>Among the two possible choices, we select DBRG since it it
+implemented in Java, which is under-represented in our sample.</p>
 </div>
 <div class="footnotes footnotes-end-of-document">
 <hr />
@@ -498,6 +537,13 @@ method.</p>
 Mendez, D. (2025). NLP4RE Tools: Classification, Overview and
 Management. In Handbook on Natural Language Processing for Requirements
 Engineering (pp. 357-380). Cham: Springer Nature Switzerland.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Ezzini, S., Abualhaija, S., Arora, C., &amp; Sabetzadeh,
+M. (2022, May). Automated handling of anaphoric ambiguity in
+requirements: a multi-solution study. In Proceedings of the 44th
+International Conference on Software Engineering (pp. 187-199).<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Ko, D., Kim, S., &amp; Park, S. (2019). Automatic
+recommendation to omitted steps in use case specification. Requirements
+Engineering, 24, 431-458.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
