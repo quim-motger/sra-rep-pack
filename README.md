@@ -1,6 +1,6 @@
 # Designing a Software Reference Architecture for NLP4RE Tools
 
-[![GitHub](https://img.shields.io/github/license/airera/study-sra)](./LICENSE)
+<!--[[GitHub](https://img.shields.io/github/license/airera/study-sra)](./LICENSE)-->
 <!-- [![DOI](https://zenodo.org/badge/702902445.svg)](https://zenodo.org/doi/10.5281/zenodo.10423665)
 [![arXiv](https://img.shields.io/badge/arXiv-2401.01154-b31b1b.svg)](https://arxiv.org/abs/2401.01154) -->
 
