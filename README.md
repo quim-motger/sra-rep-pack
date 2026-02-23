@@ -20,19 +20,27 @@ Author information is omitted to comply with [double-blind review requirements](
 This repository contains the following files:
 
 ```
-├── figures: graphical materials generated from this study
-│   ├── airera-roadmap.pdf : illustration of the applied research method (pdf)
-│   └── airera-roadmap.png : illustration of the applied research method (png)
-├── process : material for the SRA creation process following Nakagawa et al.
-│   ├── 1 - information source identification : elicitation of potential sources of requirements
-│   │   └── Related Work.xlsx : tabular overview of related scientific manuscripts
-│   ├── 2 - architectural analysis : extraction of requirements from the identified sources
-│   │   ├── analysis-process.md : process description of the architectural analysis
-│   │   └── Requirements.xlsx : system requireents elicited from the focus group activity
-│   ├── 3 - architectural synthesis : extraction of requirements from the identified sources
-│   │   └── Requirements.xlsx : system requireents elicited from the focus group activity
-│   └── 4 - architectural evaluation : 
-└── LICENSE.md : license file clarifying reuse of this material
+├── figures/  
+│   ├── airera-roadmap.pdf         # Illustration of the applied research method (PDF)  
+│   └── airera-roadmap.png         # Illustration of the applied research method (PNG)  
+├── process/                       # Materials for each step of the SRA creation process (per Nakagawa et al.)  
+│   ├── 1 - information source identification/  
+│   │   └── Related Work.xlsx      # Tabular overview of related scientific publications and resources  
+│   ├── 2 - architectural analysis/  
+│   │   ├── analysis-process.md    # Step-by-step process description of architectural analysis  
+│   │   └── Requirements.xlsx      # System and architectural requirements with traceability  
+│   ├── 3 - architectural synthesis/  
+│   │   ├── synthesis-process.md   # Process description of architectural synthesis  
+│   │   ├── airera-module-view.pdf           # Module view diagram  
+│   │   ├── airera-soa-view.pdf              # SOA component-and-connector view diagram  
+│   │   ├── airera-coc-view-paf.pdf          # Pipe-and-filter component-and-connector diagram  
+│   │   └── (other supporting artifacts)  
+│   └── 4 - architectural evaluation/  
+│       ├── evaluation-process.md            # Process description of architectural evaluation  
+│       ├── architectural alignment/         # Empirical evaluation data and annotation guidelines  
+│       ├── technology acceptance/           # Survey instrument and supporting docs  
+│       └── (other supporting artifacts)  
+└── LICENSE              # License file clarifying reuse of this material
 ```
 
 ## License
