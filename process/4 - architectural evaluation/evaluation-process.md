@@ -29,9 +29,9 @@ Supporting artifacts:
 
 - [./process/4 - architectural evaluation/technology acceptance/AIRERA Documentation.docx](/process/4%20-%20architectural%20evaluation/technology%20acceptance/AIRERA%20Documentation.docx)
 
-[^1]: Nakagawa, E. Y., et al. (2014). Consolidating a process for the design, representation, and evaluation of reference architectures. In 2014 IEEE/IFIP Conference on Software Architecture (pp. 143–152). IEEE. [12]
-[^2]: Dąbrowski, J., et al. (2022). Mining user feedback for software engineering: Use cases and reference architecture. In IEEE 30th International Requirements Engineering Conference (RE) (pp. 114–126). [11]
-[^3]: Stol, K.-J., & Fitzgerald, B. (2018). The ABC of Software Engineering Research. ACM Transactions on Software Engineering and Methodology, 27(3). [29]
-[^4]: Frattini, J., Unterkalmsteiner, M., Fucci, D., & Mendez, D. (2025). NLP4RE tools: Classification, overview and management. In A. Ferrari & G. Ginde (Eds.), Handbook on Natural Language Processing for Requirements Engineering. Springer, Cham. [4]
-[^5]: Davis, F. D. (1989). Perceived usefulness, perceived ease of use, and user acceptance of information technology. MIS Quarterly, 13(3), 319–340. [35]
-[^6]: Moody, D. L. (2003). The method evaluation model: A theoretical model for validating information systems design methods. Information Systems Journal, 13(1), 79–102. [36]
+[^1]: Nakagawa, E. Y., et al. (2014). Consolidating a process for the design, representation, and evaluation of reference architectures. In 2014 IEEE/IFIP Conference on Software Architecture (pp. 143–152). IEEE. 
+[^2]: Dąbrowski, J., et al. (2022). Mining user feedback for software engineering: Use cases and reference architecture. In IEEE 30th International Requirements Engineering Conference (RE) (pp. 114–126). 
+[^3]: Stol, K.-J., & Fitzgerald, B. (2018). The ABC of Software Engineering Research. ACM Transactions on Software Engineering and Methodology, 27(3). 
+[^4]: Frattini, J., Unterkalmsteiner, M., Fucci, D., & Mendez, D. (2025). NLP4RE tools: Classification, overview and management. In A. Ferrari & G. Ginde (Eds.), Handbook on Natural Language Processing for Requirements Engineering. Springer, Cham.
+[^5]: Davis, F. D. (1989). Perceived usefulness, perceived ease of use, and user acceptance of information technology. MIS Quarterly, 13(3), 319–340.
+[^6]: Moody, D. L. (2003). The method evaluation model: A theoretical model for validating information systems design methods. Information Systems Journal, 13(1), 79–102. 
