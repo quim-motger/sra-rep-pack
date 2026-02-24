@@ -1,8 +1,9 @@
 # A Software Reference Architecture for NLP4RE Tools
 
-<!--[[GitHub](https://img.shields.io/github/license/airera/study-sra)](./LICENSE)-->
-<!-- [![DOI](https://zenodo.org/badge/702902445.svg)](https://zenodo.org/doi/10.5281/zenodo.10423665)
-[![arXiv](https://img.shields.io/badge/arXiv-2401.01154-b31b1b.svg)](https://arxiv.org/abs/2401.01154) -->
+
+[![GitHub](https://img.shields.io/github/license/airera/study-sra)](./LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17375189.svg)](https://doi.org/10.5281/zenodo.17375189)
+<!--[![arXiv](https://img.shields.io/badge/arXiv-2401.01154-b31b1b.svg)](https://arxiv.org/abs/2401.01154) -->
 
 This repository contains the replication package for the study titled "A Software Reference Architecture for Natural Language Processing Tools in Requirements Engineering", submitted for review at the 34th IEEE International Requirements Engineering Conference.
 
